@@ -25,6 +25,7 @@ web = [
 [dependencies]
 bevy = {version="0.5.0", default-features=false}
 bevy_webgl2 = {version="0.5.0", optional=true}
+bevy_tiled_prototype={git="https://github.com/StarArawn/bevy_tiled.git",default-features=false,features=["web"],rev="240acda0f4ef5d70a7e710f5254501c94c90f0d1"}
 
 winit = {version = "0.24.0"}
 rand = "0.7"
