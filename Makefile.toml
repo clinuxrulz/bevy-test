@@ -31,7 +31,7 @@ dependencies = ["install-target-wasm32-unknown-unknown"]
 
 [tasks.build-web]
 args = ["--out-dir", "${TARGET_DIR}", "--out-name", "wasm", "--target", "web", "--no-typescript", "${CARGO_WASM_PATH}"]
-command = "wasm-bindgen"
+command = "bin/wasm-bindgen"
 dependencies = ["cargo-build-web", "wasm-bindgen-cli"]
 
 [tasks.build-native]
