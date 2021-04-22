@@ -14,15 +14,19 @@ command = "env"
 
 [tasks.install-target-wasm32-unknown-unknown]
 args = ["target", "install", "wasm32-unknown-unknown"]
-
 command = "rustup"
+
 [tasks.basic-http-server]
 install_crate = {crate_name = "basic-http-server", binary = "basic-http-server", test_arg="--help"}
+
+[tasks.install-local-install]
+install_crate = {crate_name = "cargo-local-install", binary = "cargo-local", test_arg = "--help"}
 
 [tasks.wasm-bindgen-cli]
 # install_crate = {crate_name = "wasm-bindgen-cli", binary = "wasm-bindgen", test_arg="--help"}
 command = "cargo"
 args = ["local-install", "--version", "0.2.69", "wasm-bindgen-cli"]
+dependencies = ["install-local-install"]
 
 [tasks.cargo-build-web]
 args = ["build", "--target", "wasm32-unknown-unknown", "--features", "web", "@@split(CARGO_RELEASE_ARGS, )"]
