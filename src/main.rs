@@ -2,8 +2,13 @@ use bevy::{app::CoreStage::PreUpdate, prelude::*, render::camera::Camera};
 use bevy_tiled_prototype::{MapReadyEvent, TiledMapCenter};
 
 fn main() {
-    App::build()
-        .add_plugins(bevy_webgl2::DefaultPlugins)
+    let mut app_builder = App::build();
+    let app_builder = &mut app_builder;
+    app_builder
+        .add_plugins(DefaultPlugins);
+    #[cfg(target_arch = "wasm32")]
+    app_builder.add_plugin(bevy_webgl2::WebGL2Plugin);
+    app_builder
         .add_plugin(bevy_tiled_prototype::TiledMapPlugin)
         .add_system(bevy::input::system::exit_on_esc_system.system())
         .add_startup_system(setup.system())
